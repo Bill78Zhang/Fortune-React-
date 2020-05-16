@@ -6,34 +6,43 @@ class MonthPicker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-      selectYear: 2010,
-      selectMonth: 8
+      isOpen: false
     };
   }
 
-  onChangeSelectedYear = (e, year) => {
-    e.preventDefault();
-    this.setState({selectYear: year});
-  };
-
-  onChangeSelectedMonth = (e, month) => {
-    e.preventDefault();
-    this.setState({selectMonth: month});
-  };
   onHandleToggleOpen = e => {
     e.preventDefault();
     this.setState({isOpen: !this.state.isOpen});
   };
 
+  // handleClick = e => {
+  //   if (e.target !== document.getElementById('btn-open')) {
+  //     this.setState({isOpen: false});
+  //   }
+  // };
+  // componentDidMount() {
+  //   document.addEventListener('click', this.handleClick, false);
+  // }
+
+  // componentWillUnmount() {
+  //   document.removeEventListener('click', this.handleClick, false);
+  // }
+
   render() {
-    const {isOpen, selectYear, selectMonth} = this.state;
+    const {isOpen} = this.state;
+    const {
+      onChangeSelectedMonth,
+      onChangeSelectedYear,
+      selectMonth,
+      selectYear
+    } = this.props;
     return (
       <div
         className='dropdown month-picker-component'
         style={{padding: '0.5rem'}}>
         <button
-          className='btn btn-lg btn-light dropdown-toggle'
+          className='btn btn-lg btn-light dropdown-toggle '
+          id='btn-open'
           onClick={this.onHandleToggleOpen}>
           {`${selectYear}年${selectMonth}月`}
         </button>
@@ -53,9 +62,7 @@ class MonthPicker extends React.Component {
                           : 'dropdown-item'
                       }
                       key={index}
-                      onClick={e =>
-                        this.onChangeSelectedYear(e, 2000 + number)
-                      }>
+                      onClick={e => onChangeSelectedYear(e, 2000 + number)}>
                       {2000 + number}
                     </a>
                   );
@@ -72,7 +79,7 @@ class MonthPicker extends React.Component {
                           : 'dropdown-item'
                       }
                       key={index}
-                      onClick={e => this.onChangeSelectedMonth(e, number)}>
+                      onClick={e => onChangeSelectedMonth(e, number)}>
                       {number}
                     </a>
                   );

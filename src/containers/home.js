@@ -4,9 +4,10 @@ import ViewTab from '../components/ViewTab';
 import MonthPicker from '../components/MonthPicker';
 import {listView, chartView} from '../utility';
 import TotalPrice from '../components/TotalPrice';
-import {tsThisType} from '@babel/types';
+import CreateButton from '../components/CreateButton';
 
 class Home extends React.Component {
+  date = new Date();
   items = [
     {
       id: 1,
@@ -33,30 +34,46 @@ class Home extends React.Component {
       }
     },
     {
-      id: 2,
+      id: 3,
       title: 'Electrity',
       price: 130,
       date: '2020-5-1',
       category: {
-        id: 2,
+        id: 3,
         type: 'income',
         name: 'Gas',
         iconName: 'IosCafeOutline'
       }
     },
     {
-      id: 2,
+      id: 4,
       title: 'Electrity',
       price: 130,
-      date: '2020-5-1',
+      date: '2018-4-1',
       category: {
-        id: 2,
+        id: 4,
         type: 'income',
         name: 'Gas',
         iconName: 'IosCafeOutline'
       }
     }
   ];
+
+  state = {
+    Items: this.items,
+    selectYear: this.date.getFullYear(),
+    selectMonth: this.date.getMonth() + 1
+  };
+
+  onChangeSelectedYear = (e, year) => {
+    e.preventDefault();
+    this.setState({selectYear: year});
+  };
+
+  onChangeSelectedMonth = (e, month) => {
+    e.preventDefault();
+    this.setState({selectMonth: month});
+  };
 
   calculateMoney = () => {
     let totalIncome = 0,
@@ -70,16 +87,46 @@ class Home extends React.Component {
     });
     return {totalIncome, totalOutcome};
   };
-
+  newItem = {
+    id: 5,
+    title: 'Vodafone Bill',
+    price: 40,
+    date: '2019-4-1',
+    category: {
+      id: 5,
+      type: 'phone',
+      name: 'Gas',
+      iconName: 'IosCafeOutline'
+    }
+  };
   onTabChange = view => {};
 
+  onCreateItem = e => {
+    e.preventDefault();
+    this.setState({
+      Items: [this.newItem, ...this.state.Items]
+    });
+  };
   onModifyItem = () => {
     alert('Mondify');
   };
-  onDeleteItem = () => {
-    alert('Delete');
+  onDeleteItem = item => {
+    const newItems = this.state.Items.filter(i => {
+      if (item.id !== i.id) {
+        return i;
+      }
+    });
+    this.setState({
+      Items: newItems
+    });
   };
   render() {
+    const {selectYear, selectMonth} = this.state;
+    const newItems = this.state.Items.filter(item => {
+      if (item.date.includes(`${selectYear}-${selectMonth}`)) {
+        return item;
+      }
+    });
     return (
       <React.Fragment className='container-md '>
         <div
@@ -89,15 +136,23 @@ class Home extends React.Component {
             <h2 style={{padding: '0.7rem', color: '#7f9cf5'}}>Fortune</h2>
           </div>
           <div className='col-2'>
-            <MonthPicker />
+            <MonthPicker
+              onChangeSelectedMonth={this.onChangeSelectedMonth}
+              onChangeSelectedYear={this.onChangeSelectedYear}
+              selectMonth={this.state.selectMonth}
+              selectYear={this.state.selectYear}
+            />
           </div>
           <div className='col-4'>
             <TotalPrice totalMoney={this.calculateMoney()} />
           </div>
         </div>
+        <React.Fragment>
+          <CreateButton onClick={e => this.onCreateItem(e)} />
+        </React.Fragment>
         <ViewTab active={listView} onTabChange={this.onTabChange} />
         <ItemList
-          items={this.items}
+          items={newItems}
           onModifyItem={this.onModifyItem}
           onDeleteItem={this.onDeleteItem}
         />

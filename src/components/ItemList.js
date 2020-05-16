@@ -39,7 +39,7 @@ export default function ItemList({items, onModifyItem, onDeleteItem}) {
                 font-size='100px'
                 style={{background: '#dc3545', padding: '2px'}}
                 color={'#fff'}
-                onClick={onDeleteItem}
+                onClick={() => onDeleteItem(item)}
               />
             </li>
           );
