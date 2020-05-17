@@ -7,10 +7,12 @@ import PropTypes from 'prop-types';
 export default function ItemList({items, onModifyItem, onDeleteItem}) {
   return (
     <div>
-      <ul class='list-group list-group-flush'>
+      <ul className='list-group list-group-flush'>
         {items.map(item => {
           return (
-            <li className='list-group-item  d-flex justify-content-between align-item-center'>
+            <li
+              className='list-group-item  d-flex justify-content-between align-item-center'
+              key={item.id}>
               <span className='col-1'>
                 <IosCafeOutline
                   className='rounded-circle'

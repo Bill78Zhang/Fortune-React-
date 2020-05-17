@@ -128,7 +128,7 @@ class Home extends React.Component {
       }
     });
     return (
-      <React.Fragment className='container-md '>
+      <React.Fragment>
         <div
           className='row navbar navbar-dark bg-dark d-flex justify-content-end align-item-center'
           style={{textAlign: 'center', margin: '20px'}}>
@@ -161,4 +161,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export {Home, items};

@@ -8,10 +8,10 @@ const generateActiveClass = (current, view) => {
 };
 export default function ViewTab({active, onTabChange}) {
   return (
-    <ul class='nav nav-tabs'>
-      <li class='nav-item col-6'>
+    <ul className='nav nav-tabs'>
+      <li className='nav-item col-6'>
         <a
-          class={generateActiveClass(active, 'list')}
+          className={generateActiveClass(active, 'list')}
           href='#'
           onClick={e => {
             e.preventDefault();
@@ -25,9 +25,9 @@ export default function ViewTab({active, onTabChange}) {
           List Mode
         </a>
       </li>
-      <li class='nav-item col-6'>
+      <li className='nav-item col-6'>
         <a
-          class={generateActiveClass(active, 'chart')}
+          className={generateActiveClass(active, 'chart')}
           href='#'
           onClick={e => {
             e.preventDefault();
