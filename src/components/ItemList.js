@@ -2,9 +2,11 @@ import React from 'react';
 import IosCafeOutline from 'react-ionicons/lib/IosCafeOutline';
 import IosAdd from 'react-ionicons/lib/IosAdd';
 import IosClose from 'react-ionicons/lib/IosClose';
+import ChildCareIcon from '@material-ui/icons/ChildCare';
 import PropTypes from 'prop-types';
 
 export default function ItemList({items, onModifyItem, onDeleteItem}) {
+  const iconNamec = ChildCareIcon;
   return (
     <div>
       <ul className='list-group list-group-flush'>
@@ -14,12 +16,13 @@ export default function ItemList({items, onModifyItem, onDeleteItem}) {
               className='list-group-item  d-flex justify-content-between align-item-center'
               key={item.id}>
               <span className='col-1'>
-                <IosCafeOutline
+                {/* <IosCafeOutline
                   className='rounded-circle'
                   font-size='100px'
                   style={{background: '#007bff', padding: '2px'}}
                   color={'#fff'}
-                />
+                /> */}
+                <ChildCareIcon color='primary' fontSize='large' />
               </span>
               <span className='col-5'>{item.title}</span>
               <span className='col-2 font-weight-bold'>

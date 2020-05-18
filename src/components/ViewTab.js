@@ -1,50 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import IosPaper from 'react-ionicons/lib/IosPaper';
-import IosPie from 'react-ionicons/lib/IosPie';
-import {listView, chartView} from '../utility';
-const generateActiveClass = (current, view) => {
-  return current === view ? 'nav-link active' : 'nav-link';
-};
-export default function ViewTab({active, onTabChange}) {
+import {makeStyles} from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1
+  }
+});
+
+export default function CenteredTabs(props) {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <ul className='nav nav-tabs'>
-      <li className='nav-item col-6'>
-        <a
-          className={generateActiveClass(active, 'list')}
-          href='#'
-          onClick={e => {
-            e.preventDefault();
-            onTabChange(listView);
-          }}>
-          <IosPaper
-            className='rounded-circle mr-2'
-            font-size='30px'
-            color={'#007bff'}
-          />{' '}
-          List Mode
-        </a>
-      </li>
-      <li className='nav-item col-6'>
-        <a
-          className={generateActiveClass(active, 'chart')}
-          href='#'
-          onClick={e => {
-            e.preventDefault();
-            onTabChange(chartView);
-          }}>
-          <IosPie
-            className='rounded-circle mr-2'
-            font-size='25px'
-            color={'#007bff'}
-          />
-          Chart Mode
-        </a>
-      </li>
-    </ul>
+    <Paper className={classes.root}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor='primary'
+        textColor='primary'
+        centered>
+        {props.children}
+      </Tabs>
+    </Paper>
   );
 }
-ViewTab.propTypes = {
-  active: PropTypes.string.isRequired,
-  onTabChange: PropTypes.func.isRequired
-};

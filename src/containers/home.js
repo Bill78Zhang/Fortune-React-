@@ -5,6 +5,9 @@ import MonthPicker from '../components/MonthPicker';
 import {listView, chartView} from '../utility';
 import TotalPrice from '../components/TotalPrice';
 import CreateButton from '../components/CreateButton';
+import IosPaper from 'react-ionicons/lib/IosPaper';
+import IosPie from 'react-ionicons/lib/IosPie';
+import Tab from '@material-ui/core/Tab';
 
 class Home extends React.Component {
   date = new Date();
@@ -100,7 +103,9 @@ class Home extends React.Component {
     }
   };
   onTabChange = view => {};
-
+  generateActiveClass = (current, view) => {
+    return current === view ? 'nav-link active' : 'nav-link';
+  };
   onCreateItem = e => {
     e.preventDefault();
     this.setState({
@@ -150,7 +155,38 @@ class Home extends React.Component {
         <React.Fragment>
           <CreateButton onClick={e => this.onCreateItem(e)} />
         </React.Fragment>
-        <ViewTab active={listView} onTabChange={this.onTabChange} />
+        <ViewTab>
+          <Tab
+            className={this.generateActiveClass(listView, 'list')}
+            href='#'
+            onClick={e => {
+              e.preventDefault();
+              this.onTabChange(listView);
+            }}
+            label='List Mode'>
+            <IosPaper
+              className='rounded-circle mr-2'
+              font-size='30px'
+              color={'#007bff'}
+            />
+          </Tab>
+          <Tab
+            className={this.generateActiveClass(chartView, 'list')}
+            href='#'
+            onClick={e => {
+              e.preventDefault();
+              this.onTabChange(chartView);
+            }}
+            label='Chart Mode'>
+            <IosPaper
+              className='rounded-circle mr-2'
+              font-size='30px'
+              color={'#007bff'}
+            />{' '}
+            Chart Mode
+          </Tab>
+        </ViewTab>
+
         <ItemList
           items={newItems}
           onModifyItem={this.onModifyItem}
