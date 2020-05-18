@@ -58,8 +58,8 @@ class MonthPicker extends React.Component {
                     <a
                       className={
                         selectYear === 2000 + number
-                          ? 'dropdown-item active text-white'
-                          : 'dropdown-item'
+                          ? 'dropdown-item btn-year active text-white'
+                          : 'dropdown-item btn-year'
                       }
                       key={index}
                       onClick={e => onChangeSelectedYear(e, 2000 + number)}>

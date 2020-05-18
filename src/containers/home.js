@@ -161,4 +161,4 @@ class Home extends React.Component {
   }
 }
 
-export {Home, items};
+export default Home;
