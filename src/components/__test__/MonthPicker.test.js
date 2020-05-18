@@ -25,4 +25,7 @@ describe('test MonthPicker Component', () => {
     ).toEqual('2020年7月');
     expect(wrapper.state('isOpen')).toEqual(false);
   });
+  it('test the list length of month and year', () => {
+    expect(wrapper.find('.btn-year').length).toEqual(10);
+  });
 });
