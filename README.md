@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+该项目由 [Create React App](https://github.com/facebookincubator/create-react-app) 创建.
 
-## Available Scripts
+##  React 正确实战的方法 - 项目代码
 
-In the project directory, you can run:
+### 本地开发
 
-### `yarn start`
+第一次运行首先安装依赖，只需要运行一次
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm insall
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+然后本地启动项目
 
-### `yarn test`
+```bash
+npm run dev
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 测试
 
-### `yarn build`
+```bash
+npm test
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### 运行环境
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+本项目在macOS Sierra 10.12.6 或更高版本 以及 Chrome 68或更高版本下运行，其他操作系统和浏览器尚未测试。
 
-### `yarn eject`
+### 打包以及上线
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+先将程序为生产环境打包
+```bash
+npm build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
+该命令用于在云服务器里直接运行，本地可以用于测试
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+lean deploy
+```
+该命令可以直接部署到 LeanCloud，如果想了解详情，请认真观看最后一章 项目部署
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+线上体验地址：
 
-## Learn More
+**[React Money Book](http://dantou.leanapp.cn/)**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
